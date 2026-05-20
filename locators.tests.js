@@ -73,5 +73,12 @@ test('sleep', async ({ page }) => {
     await expect(page.getByRole('heading' , {name: "Example 1: Element on page that is hidden"})).toBeVisible();
     await page.getByRole('button' , {name: 'Start'}).click();
     //implicit wait
-    await page.waitForTimeout(3000);
-    await expect(page.getByRole('heading' , {name: "Hello World!"})).toBeVisible();
+    //await page.waitForTimeout(3000);
+    //await expect(page.getByRole('heading' , {name: "Hello World!"})).toBeVisible();
+    //explicit wait
+    await page.locator('#finish').waitFor({state: 'visible'});
+    await expect(page.locator('#finish h4')).toBeVisible();
+});
+
+
+
